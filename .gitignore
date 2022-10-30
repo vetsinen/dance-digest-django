@@ -1,4 +1,4 @@
 .idea
 tmp/
 mysite/.env
-mysite/__pycache__
+mysite/__pycache__/*.pyc
