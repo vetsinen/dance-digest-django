@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>{{ e.title }}-танцювальний дайджест</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
+</head>
+<body>
+<section class="section">
     <div class="container">
-      <h1 class="title">
-        Hello event
-      </h1>
-      <p class="subtitle">
-        My first <strong>event</strong>, {{ descr }}
-      </p>
+        <h2 class="title">{{ e.title }}</h2>
+        {% if url %}
+        <figure class="image ">
+            <img src="{{ url }}">
+        </figure>
+        {% endif %}
+        <div class="event">
+            <strong>{{ e.weekday }}</strong> <span> {{ e.startTime }},</span>
+            <span class="is-medium">{{ e.title }},</span>
+            <span class="is-info">{{ e.address }},</span>
+            баланс треків: <strong>{{ e.balance }},</strong>
+            <span>вхід: {{ e.price }}</span>
+            <br/>
+            <pre>{{ e.description }}</pre>
+
+            <a href="/">повернутись до списку вечірок</a>
+        </div>
     </div>
-  </section>
-  </body>
+</section>
+</body>
 </html>

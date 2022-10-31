@@ -12,9 +12,9 @@
       <h2 class="subtitle">
         Розклад танцювальних вечірок на <strong>тиждень</strong>
       </h2>
-     <div class="">
+     <div class="event-container">
         {% for e in events %}
-            <div class="">
+            <div class="event">
                 <strong>{{ e.weekday }}</strong> <span> {{ e.startTime }},</span>
                 <span class="is-medium">{{ e.title }},</span>
                 <span class="is-info">{{ e.address }},</span>
@@ -22,7 +22,7 @@
                 <span>вхід: {{ e.price }}</span>
                 <br/>
                 <p>{{ e.brief }}</p>
-{#                <a href="/event/42">дивитись повну версію анонсу</a>#}
+                👉 <a href="/event/{{ e.id }}">дивитись повну версію анонсу</a>
             </div>
             <hr>
         {% endfor %}

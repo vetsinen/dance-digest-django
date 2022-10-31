@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .repository import fetch
+from .repository import fetch, fetch_by_id
 
 def index(request):
     e = fetch('w2>=0')
@@ -8,4 +8,6 @@ def index(request):
 
 def event(request, id):
     print(id)
-    return render(request, 'digest/event-details.html',{'descr':'long description'})
+    event = fetch_by_id(id)
+    url = event['pic'][0]['url'] if event['pic'] else None
+    return render(request, 'digest/event-details.html',{'e': event, 'url': url })
