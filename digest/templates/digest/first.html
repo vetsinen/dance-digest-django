@@ -3,21 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello {{ title }}</title>
+    <title>Розклад танцювальних вечірок</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
   <body>
   <section class="section">
     <div class="container">
       <h2 class="subtitle">
-        My first webapp with <strong>Bulma</strong>!
+        Розклад танцювальних вечірок на <strong>тиждень</strong>
       </h2>
-     <div class="columns">
+     <div class="">
         {% for e in events %}
-            <div class="column">
-                <span class="is-medium">{{ e.title }}</span>
-                <span class="is-info">{{ e.address }}</span>
+            <div class="">
+                <strong>{{ e.weekday }}</strong> <span> {{ e.startTime }},</span>
+                <span class="is-medium">{{ e.title }},</span>
+                <span class="is-info">{{ e.address }},</span>
+                баланс треків: <strong>{{ e.balance }},</strong>
+                <span>вхід: {{ e.price }}</span>
+                <br/>
+                <p>{{ e.brief }}</p>
+                <a href="/event/42">дивитись повну версію анонсу</a>
             </div>
+            <hr>
         {% endfor %}
      </div>
     </div>

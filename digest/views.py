@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from airtable import airtable
+from mysite.settings import AIRTABLE_TOKEN
 
 from random import randint
 from operator import itemgetter
@@ -33,10 +34,15 @@ def get_plain_events(raw_events):
     return events
 
 def fetch(filter="w2>=0"):
-    at = airtable.Airtable('appW2upPBNl804iB1', 'keyqdwnX6NQUAqMyE')
+    at = airtable.Airtable('appW2upPBNl804iB1', AIRTABLE_TOKEN )
     raw_events =  at.get('events',filter_by_formula=filter)['records']
     return get_plain_events(raw_events)
 
 def index(request):
-    e = fetch('w2=5')
+    e = fetch('w2>=0')
     return render(request, 'digest/first.html', {'title':'42', 'events':e})
+
+
+def event(request, id):
+    print(id)
+    return render(request, 'digest/event-details.html',{'descr':'long description'})
