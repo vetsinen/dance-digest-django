@@ -5,3 +5,4 @@ sqlparse==0.4.2
 python-dotenv
 airtable
 psycopg2-binary
+whitenoise
