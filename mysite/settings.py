@@ -30,7 +30,7 @@ AIRTABLE_TOKEN = os.environ['AIRTABLE_TOKEN']
 DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://django-server-production-a666.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://django-server-production-a666.up.railway.app','https://opendance.life']
 
 
 # Application definition

@@ -29,6 +29,10 @@ class Coach(models.Model):
     direction = models.CharField(max_length=30, choices=DIRECTIONS, default="menga", verbose_name='напрямок танцю(стиль)')
     details = models.TextField( verbose_name="детальний опис про заняття для групи")
     maintainer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+                                   #default=1,
                                    verbose_name="Відповідальний за актуальність інформації")
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'викладач або пара викладачів, група'
