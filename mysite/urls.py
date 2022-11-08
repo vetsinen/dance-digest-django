@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from digest.admin import coachesEditorArea
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('editor/', coachesEditorArea.urls),
     path('', include('digest.urls')),
 ]
