@@ -6,3 +6,4 @@ python-dotenv
 airtable
 psycopg2-binary
 whitenoise
+django-guardian
