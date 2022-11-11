@@ -1,9 +1,8 @@
 from django.contrib import admin
 from .models import Post, Coach
+from guardian.admin import GuardedModelAdmin
 
-admin.site.register(Post)
-@admin.register(Coach)
-class CoachModelAdmin(admin.ModelAdmin):
+class CoachModelAdmin(GuardedModelAdmin):
     pass
     # exclude = ('maintainer',)
     #TODO: check if request.user is superadmin
@@ -13,14 +12,16 @@ class CoachModelAdmin(admin.ModelAdmin):
     #             return ['status']
     #     else:
     #         return []
+admin.site.register(Coach, CoachModelAdmin)
 
 class CoachesEditorArea(admin.AdminSite):
     site_header = 'Coaches Editor Area'
 
 coachesEditorArea = CoachesEditorArea(name='Coaches editor')
 
-coachesEditorArea.register(Coach)
-
 class CoachModelEditor(admin.ModelAdmin):
     exclude = ('maintainer',)
+coachesEditorArea.register(Coach, CoachModelEditor)
+
+
 

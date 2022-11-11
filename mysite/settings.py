@@ -27,13 +27,17 @@ SECRET_KEY = os.environ['SECRET_KEY']
 AIRTABLE_TOKEN = os.environ['AIRTABLE_TOKEN']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://django-server-production-a666.up.railway.app','https://opendance.life']
 
 
 # Application definition
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'digest'
+    'digest',
+    'guardian'
 ]
 
 MIDDLEWARE = [

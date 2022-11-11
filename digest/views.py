@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from .repository import fetch, fetch_by_id
+import datetime
 
 def index(request):
-    e = fetch('w2>=0')
+    weekday = datetime.datetime.today().weekday()
+
+    e = fetch(f'w2>={weekday}')
     return render(request, 'digest/first.html', {'title':'42', 'events':e})
 
 
